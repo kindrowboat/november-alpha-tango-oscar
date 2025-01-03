@@ -1,0 +1,19 @@
+{
+  "name": "november-alpha-tango-oscar",
+  "version": "1.0.0",
+  "description": "a nato phonetic alphabet quizzy thing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kindrowboat/november-alpha-tango-oscar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kindrowboat/november-alpha-tango-oscar/issues"
+  },
+  "homepage": "https://github.com/kindrowboat/november-alpha-tango-oscar#readme"
+}
