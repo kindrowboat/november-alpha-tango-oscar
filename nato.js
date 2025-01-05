@@ -1,3 +1,4 @@
+const nato = 
 {
   "a": "alfa",
   "b": "bravo",
@@ -25,4 +26,6 @@
   "x": "x-ray",
   "y": "yankee",
   "z": "zulu"
-}
+};
+
+export default nato;

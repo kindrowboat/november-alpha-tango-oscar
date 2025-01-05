@@ -1,15 +1,11 @@
-const words = require("./words");
-const nato = require("./nato");
-const readline = require('readline');
+// TODO delete
+import readline from "readline";
 
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-}
+import Quiz from "./Quiz.js";
+const quiz = new Quiz();
+console.log(quiz.word);
 
-const randomWord = words[getRandomInt(words.length)];
-
-console.log(`The word is: ${randomWord}`);
-
+const randomWord = quiz.word;
 const randomWordArray = randomWord.split('');
 
 const rl = readline.createInterface({
@@ -17,19 +13,19 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-let currentLetterIndex = 0;
+
+console.log(`The word is: ${quiz.word}`);
 
 function askQuestion() {
-    const letter = randomWordArray[currentLetterIndex];
+    const letter = quiz.nextLetter;
     rl.question(`What is the NATO code for "${letter}"? `, (answer) => {
-        if (answer.toLowerCase() === nato[letter].toLowerCase()) {
+        if (quiz.guess(answer)) {
             console.log("Correct!");
-            currentLetterIndex++;
-            if (currentLetterIndex < randomWordArray.length) {
-                askQuestion();
-            } else {
+            if (quiz.isComplete) {
                 console.log("You have completed the word!");
                 rl.close();
+            } else {
+                askQuestion();
             }
         } else {
             console.log("Incorrect, try again.");

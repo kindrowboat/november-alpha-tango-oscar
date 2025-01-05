@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NATO Phonetic Alphabet Quiz</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+            border: 20px solid transparent;
+            border-image: url('nato_flags_border.png') 30 round;
+        }
+        #quiz-container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        #quiz-container h1 {
+            margin: 0 0 20px;
+        }
+        #answer-input {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        #word {
+            font-size: 24px;
+        }
+        #submit-btn, #reset-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #submit-btn:hover, #reset-btn:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .highlight {
+            font-weight: bold;
+            border: 1px solid black;
+            color: purple;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        spoiler {
+            color: #888;
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="quiz-container">
+        <h1>NATO Phonetic Alphabet Quiz</h1>
+        <p id="question">Spell the word: <span id="word"></span></p>
+        <input type="text" id="answer-input" placeholder="enter corresponding NATO word">
+        <button id="submit-btn">Submit</button>
+        <button id="reset-btn" class="hidden">Reset</button>
+        <p id="result"></p>
+    </div>
+
+    <script type="module">
+        import Quiz from './Quiz.js';
+
+        let quiz = new Quiz();
+        const wordElement = document.getElementById('word');
+        const answerInput = document.getElementById('answer-input');
+        const submitBtn = document.getElementById('submit-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const resultElement = document.getElementById('result');
+
+        function reset() {
+            quiz = new Quiz();
+            submitBtn.className = '';
+            resetBtn.className = 'hidden';
+            updateWordDisplay();
+        }
+
+        function updateWordDisplay() {
+            const wordArray = quiz.word.split('');
+            const highlightedWord = wordArray.map((letter, index) => {
+                if (index === quiz.currentIndex) {
+                    return `<span class="highlight">${letter}</span>`;
+                }
+                return letter;
+            }).join('');
+            wordElement.innerHTML = highlightedWord;
+        }
+
+        updateWordDisplay();
+
+        function submitAnswer() {
+            const answer = answerInput.value.trim();
+            if (answer === '') {
+                resultElement.textContent = 'Please enter an answer.';
+                return;
+            }
+
+            if (quiz.guess(answer)) {
+                resultElement.textContent = 'Correct!';
+                resultElement.style.color = 'green';
+                if (quiz.isComplete) {
+                    resultElement.textContent = 'You win!';
+                    resultElement.style.color = 'gold';
+                    submitBtn.className = 'hidden';
+                    resetBtn.className = '';
+                }
+            } else {
+                const spoiler = document.createElement('spoiler');
+                spoiler.textContent = 'click for spoiler';
+                spoiler.dataset.answer = quiz.answer;
+                spoiler.onclick = event => {
+                    event.target.textContent = event.target.dataset.answer;
+                };
+                resultElement.textContent = `Incorrect. Try again! `;
+                resultElement.appendChild(spoiler);
+                
+                resultElement.style.color = 'red';
+            }
+
+            answerInput.value = '';
+            updateWordDisplay();
+        }
+
+        submitBtn.addEventListener('click', submitAnswer);
+        resetBtn.addEventListener('click', reset);
+        answerInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                submitAnswer();
+            }
+        });
+    </script>
+
+
+</body>
+</html>

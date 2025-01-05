@@ -1,4 +1,4 @@
-[
+const words = [
   "aardvark","abacus","abandon","abashed","abate","abbey","abbot","abdicate","aberration","abhor","abhorrent","abide","abject","ablaze","abnegate","abnormal","abolish","abominable","aboriginal","abortive","abrasive","abridge","abrogate","abscess","abscond","absence","absolute","absolution","absolve","abstain","abstract","absurd","abundance","abundant","abuse","abut","abuzz","abyss",
   "bachelor","bacillus","badger","baffle","baguette","bailiff","balaclava","balcony","ballast","balm","bandage","bandwidth","banish","banister","banquet","barrage","barrister","basilica","basket","bastion","battalion","batter","bauxite","bawd","bawdy","bayonet","bedazzle","bedlam","befriend","beget","beginner","beguile","behavior","belabor","belated","belch","beleaguer","belie",
   "caboose","cajole","calamity","calculus","caliber","caliph","calisthenics","calligraphy","callous","calorie","calumny","camaraderie","cameo","camouflage","campaign","canary","candid","candor","cannon","canonical","canopy","cantankerous","canvas","canyon","capacious","capitol","capricious","captain","captive","capture","carafe","caravan","carbonic","carcinogen","cardiac","cardinal","careen","career",
@@ -25,4 +25,6 @@
   "xanthan","xanthophyll","xenial","xenon","xenophile","xenophobia","xeric","xerography","xerophyte","xylem","xylene","xylitol","xylophone","xylose","xyster","xystus","xyston","xenia","xanthic","xanthous","xenolith","xerox","xiphoid","xoom","xylograph","xylography","xanthoma","xanthosis","xyloglyphy","xenialness","xyloid","xenogeny","xenograft","xyloidin","xanthein","xanthate","xylotypographic","xanthate","xanthism","xanthicness",
   "yacht","yahoo","yakitori","yammer","yapok","yardarm","yarrow","yawp","yearbook","yearling","yearn","yeasty","yell","yellowish","yelp","yen","yesterday","yeti","yield","yippee","yodel","yoga","yogurt","yokel","yolk","yonder","youngster","youthful","yttrium","yucca","yule","yuletide","yuppie","yurt","ytterbium","yttria","yackety","yawning","yapping","yearlong",
   "zeal","zealot","zebra","zebu","zenith","zephyr","zeppelin","zerk","zero","zest","zeta","ziggurat","zigzag","zillion","zinc","zircon","zither","zodiac","zombie","zoning","zonked","zoological","zoology","zoom","zoophyte","zucchini","zwieback","zydeco","zymase","zymurgy","zygote","zealotry","zibeline","zelig","zeroth","zigzagger","zitherist","zombify","zookeeper","zucchero"
-]
+];
+
+export default words;
