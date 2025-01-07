@@ -110,7 +110,15 @@
         function submitAnswer() {
             const answer = answerInput.value.trim();
             if (answer === '') {
+               
+                const spoiler = document.createElement('spoiler');
+                spoiler.textContent = 'click for spoiler';
+                spoiler.dataset.answer = quiz.answer;
+                spoiler.onclick = event => {
+                    event.target.textContent = event.target.dataset.answer;
+                };
                 resultElement.textContent = 'Please enter an answer.';
+                resultElement.appendChild(spoiler);
                 return;
             }
 
@@ -143,9 +151,14 @@
         submitBtn.addEventListener('click', submitAnswer);
         resetBtn.addEventListener('click', reset);
         answerInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
+            if (quiz.isComplete){
+                reset();
+                resultElement.textContent = '';
+            }
+            else if (e.key === 'Enter') {
                 submitAnswer();
             }
+            
         });
     </script>
 
